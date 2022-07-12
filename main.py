@@ -67,8 +67,7 @@ while (EXIT != True):
         second_rune_page = mini_rune_to_show[-2:]
         first_rune_page = mini_rune_to_show[:-2]
         print("Runes to choose")
-        print(rune_to_show)
-        print(f"{main_rune_list[0]}\t\t\t\t\t\t{main_rune_list[1]}")
+        print(f"{main_rune_list[0]}\t\t\t\t\t\t{main_rune_list[1]}\n{rune_to_show}")
         for i in range(0, len(first_rune_page)):
             if i >= len(second_rune_page):
                 print(first_rune_page[i])
