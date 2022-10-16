@@ -1,5 +1,6 @@
 # RuneHelper
-
+Returns the runes to use for a specific lane with its champion.  
+Uses u.gg for scraping.  
 
 
 # Installation
