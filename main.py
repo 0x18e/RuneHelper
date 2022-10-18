@@ -1,6 +1,9 @@
+import tkinter
 from bs4 import BeautifulSoup
 import requests
 from levenFunc import calcDictDistance
+from tkinter import *
+from tkinter import ttk
 
 
 def getRole():
@@ -24,9 +27,10 @@ def getRole():
 
 EXIT = False
 print("this will eventually get a somewhat decent gui")
+
+
 while (EXIT != True):
     role, champion = getRole()
-
     with open('new_champions.txt', 'r') as file:
         name = file.readlines()
         p = []
@@ -54,25 +58,28 @@ while (EXIT != True):
         main_rune_list = []
         for result in main_runes:
             main_rune_list.append(result.text)
-        rune_to_show = ""
+        rune_to_show = []
         mini_rune_to_show = []
 
         for rune in text:
             if (str(rune['alt']) in str(runes[0])):
-                rune_to_show = rune['alt']
+                rune_to_show.append(rune['alt'])
             if (str(rune['alt']) in str(mini_runes)):
                 mini_rune_to_show.append(rune['alt'])
 
+        rune_to_show = rune_to_show[0]
         mini_rune_to_show = mini_rune_to_show[:-5]
-        second_rune_page = mini_rune_to_show[-2:]
         first_rune_page = mini_rune_to_show[:-2]
+        second_rune_page = first_rune_page[-2:]
+        first_rune_page = first_rune_page[:-2]
         print("Runes to choose")
+        #print(rune_to_show)
         print(f"{main_rune_list[0]}\t\t\t\t\t\t{main_rune_list[1]}\n{rune_to_show}")
         for i in range(0, len(first_rune_page)):
             if i >= len(second_rune_page):
                 print(first_rune_page[i])
             else:
-                print(f"{first_rune_page[i]}\t\t\t\t{second_rune_page[i]}")
+                print(f"{first_rune_page[i]}\t\t\t\t\t\t{second_rune_page[i]}")
         page.close()
         choice = input("rerun? y/n\n")
         if choice == "yes" or choice == "y":
